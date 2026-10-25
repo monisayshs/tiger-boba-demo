@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiger Boba — India's First Ready-to-Drink Boba in a Can</title>
+<meta name="description" content="Tiger Boba — fruit-based ready-to-drink boba beverages in 200ml sealed cans. Bulk supply for distributors, cafés, retailers and private-label partners across India.">
+<style>
+  :root{
+    --amber:#f59e0b; --amber-deep:#d97706; --tiger:#ea580c;
+    --espresso:#1c1007; --espresso-2:#2b1a0c; --cream:#fff8ec; --cream-2:#ffefd6;
+    --ink:#3a2a18; --muted:#8a6f4d;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       background:var(--cream);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+  /* demo label strip */
+  .demo-strip{background:#111;color:#ffd166;text-align:center;font-size:12px;letter-spacing:.08em;
+    padding:8px 12px;font-weight:600}
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(28,16,7,.96);backdrop-filter:blur(6px);
+      display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+  .logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:20px;letter-spacing:.02em}
+  .logo .paw{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--amber),var(--tiger));
+    display:flex;align-items:center;justify-content:center;font-size:18px}
+  .nav-cta{background:var(--amber);color:var(--espresso);font-weight:700;border:none;border-radius:999px;
+    padding:10px 20px;font-size:14px;cursor:pointer;text-decoration:none}
+  /* hero */
+  .hero{background:
+      radial-gradient(1200px 500px at 80% -10%,rgba(245,158,11,.25),transparent 60%),
+      repeating-linear-gradient(-55deg,transparent 0 46px,rgba(234,88,12,.06) 46px 60px),
+      linear-gradient(160deg,var(--espresso) 0%,var(--espresso-2) 70%);
+    color:#fff;padding:64px 20px 56px;text-align:center;overflow:hidden}
+  .hero .kicker{display:inline-block;background:rgba(245,158,11,.16);border:1px solid rgba(245,158,11,.5);
+    color:#ffd166;font-size:12.5px;font-weight:700;letter-spacing:.14em;padding:7px 16px;border-radius:999px;margin-bottom:18px}
+  .hero h1{font-size:clamp(30px,6vw,54px);line-height:1.12;font-weight:800;letter-spacing:-.01em;max-width:760px;margin:0 auto 14px}
+  .hero h1 .tiger{background:linear-gradient(90deg,#ffd166,var(--amber),var(--tiger));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:#e8d9bd;max-width:560px;margin:0 auto 26px;font-size:16.5px}
+  .hero .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 26px;border-radius:999px;font-weight:700;font-size:15px;
+    text-decoration:none;cursor:pointer;border:none}
+  .btn-amber{background:var(--amber);color:var(--espresso)}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45)}
+  .hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+  .hero-badges span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+    padding:7px 14px;border-radius:999px;font-size:13px;color:#f3e7cd}
+  /* stats */
+  .stats{background:var(--amber);color:var(--espresso);display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));text-align:center}
+  .stat{padding:20px 10px;border-right:1px dashed rgba(28,16,7,.25)}
+  .stat:last-child{border-right:none}
+  .stat b{font-size:clamp(22px,3.4vw,30px);display:block;font-weight:800}
+  .stat small{font-size:12.5px;font-weight:600;opacity:.8}
+  /* sections */
+  section{padding:56px 20px;max-width:1100px;margin:0 auto}
+  .eyebrow{color:var(--tiger);font-weight:800;font-size:12.5px;letter-spacing:.16em;margin-bottom:8px}
+  h2{font-size:clamp(24px,4.4vw,36px);font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+  .lede{color:var(--muted);max-width:620px;margin-bottom:28px;font-size:16px}
+  /* flavors */
+  .flavor-group{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--muted);margin:26px 0 14px}
+  .flavors{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+  .flavor{background:#fff;border-radius:18px;padding:16px 12px 14px;text-align:center;
+    box-shadow:0 6px 18px rgba(60,35,5,.08);border:1px solid #f3e4c8;transition:transform .18s}
+  .flavor:hover{transform:translateY(-4px)}
+  .can{width:64px;height:104px;margin:0 auto 10px;border-radius:12px 12px 14px 14px;position:relative;
+    box-shadow:inset -8px 0 14px rgba(0,0,0,.18),inset 8px 0 14px rgba(255,255,255,.25),0 8px 16px rgba(60,35,5,.15);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;overflow:hidden}
+  .can::before{content:"";position:absolute;top:0;left:0;right:0;height:12px;
+    background:linear-gradient(#d9d9d9,#a8a8a8);border-radius:12px 12px 0 0}
+  .can::after{content:"";position:absolute;inset:12px 0 0 0;
+    background:repeating-linear-gradient(-55deg,transparent 0 10px,rgba(0,0,0,.10) 10px 14px)}
+  .can .cb{font-size:9px;font-weight:800;letter-spacing:.06em;z-index:1;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+  .can .cf{font-size:8px;font-weight:600;z-index:1;opacity:.95;text-shadow:0 1px 2px rgba(0,0,0,.35);padding:0 4px}
+  .flavor b{font-size:14px;display:block}
+  .flavor small{color:var(--muted);font-size:11.5px}
+  /* partner */
+  .partner{background:linear-gradient(160deg,var(--espresso),var(--espresso-2));border-radius:26px;
+    padding:44px 28px;color:#fff;position:relative;overflow:hidden}
+  .partner::before{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(-55deg,transparent 0 60px,rgba(245,158,11,.05) 60px 78px)}
+  .partner h2{color:#fff;position:relative}
+  .partner .lede{color:#d9c8a6;position:relative}
+  .p-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;position:relative;margin-top:8px}
+  .p-card{background:rgba(255,255,255,.06);border:1px solid rgba(245,158,11,.3);border-radius:16px;padding:18px}
+  .p-card .ic{font-size:24px;margin-bottom:8px}
+  .p-card b{color:#ffd166;display:block;margin-bottom:4px;font-size:15px}
+  .p-card p{font-size:13.5px;color:#e8d9bd}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;position:relative}
+  .chips span{background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.45);color:#ffd166;
+    padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600}
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .step{background:#fff;border:1px solid #f3e4c8;border-radius:18px;padding:22px;text-align:center;
+    box-shadow:0 6px 18px rgba(60,35,5,.07)}
+  .step .n{width:40px;height:40px;border-radius:50%;background:var(--amber);color:var(--espresso);
+    font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:18px}
+  .step b{display:block;margin-bottom:6px}
+  .step p{font-size:14px;color:var(--muted)}
+  /* enquiry */
+  .enquiry{background:#fff;border-radius:26px;padding:40px 26px;border:1px solid #f3e4c8;
+    box-shadow:0 12px 34px rgba(60,35,5,.10);display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+  .enquiry h2{margin-bottom:6px}
+  .enquiry .lede{margin-bottom:0}
+  form{display:grid;gap:12px}
+  label{font-size:13px;font-weight:700;color:var(--ink)}
+  input,select{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid #e7d3ac;font-size:15px;
+    background:var(--cream);color:var(--ink)}
+  input:focus,select:focus{outline:none;border-color:var(--amber)}
+  .wa{display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;font-weight:700;
+    padding:13px 22px;border-radius:999px;text-decoration:none;font-size:15px;justify-content:center}
+  .demo-note{font-size:12px;color:var(--muted);margin-top:10px}
+  /* footer */
+  footer{background:var(--espresso);color:#bfa77f;text-align:center;padding:30px 20px;font-size:13px}
+  footer b{color:#ffd166}
+  @media(max-width:720px){.enquiry{grid-template-columns:1fr}}
+  #toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--espresso);
+    color:#ffd166;padding:13px 22px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;
+    transition:.25s;pointer-events:none;z-index:99}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="demo-strip">DEMO MOCKUP — concept homepage prepared by Mauhnish for Tiger Boba · not the official website</div>
+
+<nav>
+  <div class="logo"><span class="paw">🐯</span> TIGER&nbsp;BOBA</div>
+  <a class="nav-cta" href="#partner">Partner with us</a>
+</nav>
+
+<header class="hero">
+  <span class="kicker">INDIA'S FIRST RTD BOBA IN A CAN</span>
+  <h1>Real fruit. Chewy boba.<br><span class="tiger">Zero prep.</span></h1>
+  <p>Ready-to-drink boba beverages in sealed 200&nbsp;ml cans — fruit-based &amp; soda-based, low sugar. Open, sip, done.</p>
+  <div class="btns">
+    <a class="btn btn-amber" href="#partner">Become a distributor</a>
+    <a class="btn btn-ghost" href="#flavors">See the flavors</a>
+  </div>
+  <div class="hero-badges">
+    <span>🧋 200 ml sealed cans</span>
+    <span>📦 6-month shelf life</span>
+    <span>🇮🇳 Homegrown Indian brand</span>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stat"><b>15,000+</b><small>cans sold in Delhi NCR</small></div>
+  <div class="stat"><b>11</b><small>flavors &amp; counting</small></div>
+  <div class="stat"><b>6 months</b><small>shelf life, sealed cans</small></div>
+  <div class="stat"><b>0</b><small>prep — ready to drink</small></div>
+</div>
+
+<section id="flavors">
+  <div class="eyebrow">THE LINEUP</div>
+  <h2>Flavors people come back for</h2>
+  <p class="lede">Two ranges, one promise — real fruit taste with chewy boba pearls in every can.</p>
+
+  <div class="flavor-group">FRUIT BASE BOBA DRINK</div>
+  <div class="flavors">
+    <div class="flavor"><div class="can" style="background:linear-gradient(160deg,#fb7185,#e11d48)"><span class="cb">TIGER BOBA</span><span class="cf">Strawberry Splash</span></div><b>Strawberry Splash</b><small>Fruit base</small></div>
+    <div class="flavor"><div class="can" style="background:linear-gradient(160deg,#fbbf24,#d97706)"><span class="cb">TIGER BOBA</span><span class="cf">Pineapple Squash</span></div><b>Pineapple Squash</b><small>Fruit base</small></div>
+    <div class="flavor"><div class="can" style="background:linear-gradient(160deg,#f9a8d4,#db2777)"><span class="cb">TIGER BOBA</span><span class="cf">Lychee</span></div><b>Lychee</b><small>Fruit base</small></div>
+    <div class="flavor"><div class="can" style="background:linear-gradient(160deg,#f87171,#b91c1c)"><span class="cb">TIGER BOBA</span><span class="cf">Cranberry</span></div><b>Cranberry</b><small>Fruit base</small></div>
+    <div class="flavor"><div class="can" style="background:linear-gradient(160deg,#4ade80,#15803d)"><span class="cb">TIGER BOBA</span><span class="cf">Wat-A-Mellon</span></div><b>Wat-A-Mellon</b><small>Fruit base</small></div>
+    <div class="flavor"><div class="can" style="background:linear-gradient(160deg,#fbbf24,#ea580c)"><span class="cb">TIGER BOBA</span><span class="cf">OG Mango Chill</span></div><b>OG Mango Chill</b><small>Fruit base</small></div>
+    <div class="flavor"><div class="can" style="background:linear-gradient(160deg,#a3e635,#4d7c0f)"><span class="cb">TIGER BOBA</span><span class="cf">Muskmelon Pop</span></div><b>Muskmelon Pop</b><small>Fruit base</small></div>
+    <div class="flavor"><div class="can" style="background:linear-gradient(160deg,#84cc16,#3f6212)"><span class="cb">TIGER BOBA</span><span class="cf">Chili Guava</span></div><b>Chili Guava</b><small>Fruit base · spicy kick</small></div>
+  </div>
+
+  <div class="flavor-group">SODA BASE BOBA DRINK</div>
+  <div class="flavors">
+    <div class="flavor"><div class="can" style="background:linear-gradient(160deg,#60a5fa,#1d4ed8)"><span class="cb">TIGER BOBA</span><span class="cf">Blueberry Cooler</span></div><b>Blueberry Cooler Boba</b><small>Soda base</small></div>
+    <div class="flavor"><div class="can" style="background:linear-gradient(160deg,#fbbf24,#b45309)"><span class="cb">TIGER BOBA</span><span class="cf">Fruit Beer Boba</span></div><b>Fruit Beer Boba</b><small>Soda base · non-alcoholic</small></div>
+    <div class="flavor"><div class="can" style="background:linear-gradient(160deg,#fb923c,#c2410c)"><span class="cb">TIGER BOBA</span><span class="cf">Orange Red Rush</span></div><b>Orange Red Rush Boba</b><small>Soda base</small></div>
+  </div>
+</section>
+
+<section id="partner" style="padding-top:8px">
+  <div class="partner">
+    <div class="eyebrow" style="color:#ffd166">FOR BUSINESS</div>
+    <h2>Sell the drink everyone's asking about</h2>
+    <p class="lede">High-margin, ready-to-sell cans — no machines, no prep, no training. Just stock and serve.</p>
+    <div class="p-grid">
+      <div class="p-card"><div class="ic">💰</div><b>High distributor margins</b><p>Attractive pricing built for resellers and retail partners.</p></div>
+      <div class="p-card"><div class="ic">🏭</div><b>Reliable manufacturing</b><p>FMCG-grade production with consistent taste, batch after batch.</p></div>
+      <div class="p-card"><div class="ic">🎨</div><b>Private label &amp; OEM</b><p>Your brand on our cans — custom flavors developed for you.</p></div>
+      <div class="p-card"><div class="ic">🚚</div><b>Flexible bulk supply</b><p>Plans tailored for restaurants, cafés, events and retail chains.</p></div>
+    </div>
+    <div class="chips">
+      <span>Distributors &amp; wholesalers</span>
+      <span>Cafés, restaurants &amp; QSR</span>
+      <span>Supermarkets &amp; retail</span>
+      <span>Events &amp; catering</span>
+      <span>Private-label brands</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:8px">
+  <div class="eyebrow">HOW IT WORKS</div>
+  <h2>From enquiry to your shelf in 3 steps</h2>
+  <p class="lede">Simple on purpose — the drink sells itself once people taste it.</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><b>Send an enquiry</b><p>Tell us your city and business type — takes 30 seconds.</p></div>
+    <div class="step"><div class="n">2</div><b>Get samples &amp; pricing</b><p>Taste the range, see distributor margins.</p></div>
+    <div class="step"><div class="n">3</div><b>Stock &amp; sell</b><p>Cans arrive sealed — serve chilled, zero prep.</p></div>
+  </div>
+</section>
+
+<section style="padding-top:8px">
+  <div class="enquiry">
+    <div>
+      <div class="eyebrow">PARTNER ENQUIRY</div>
+      <h2>Let's talk business</h2>
+      <p class="lede">Distributor, café owner, retailer or event company — drop your details and the Tiger Boba team will reach out with samples and pricing.</p>
+      <p class="demo-note">Demo version — this form doesn't send anywhere yet. In the live site it would email the Tiger Boba team directly.</p>
+    </div>
+    <form id="enq" onsubmit="return demoSend(event)">
+      <div><label>Your name</label><input required placeholder="e.g. Rahul Sharma"></div>
+      <div><label>Business type</label>
+        <select><option>Distributor / Wholesaler</option><option>Café / Restaurant / QSR</option><option>Retail store / Supermarket</option><option>Events / Catering</option><option>Private label enquiry</option></select>
+      </div>
+      <div><label>City</label><input required placeholder="e.g. Noida"></div>
+      <div><label>Phone / WhatsApp</label><input required inputmode="tel" placeholder="e.g. 98XXXXXXXX"></div>
+      <button class="btn btn-amber" type="submit" style="width:100%">Send enquiry</button>
+      <a class="wa" href="#" onclick="return demoSend(event)">💬 Chat on WhatsApp</a>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <b>TIGER BOBA</b> — concept demo homepage prepared by <b>Mauhnish</b>.<br>
+  This is a design mockup, not the official Tiger Boba website. Brand facts: 200 ml RTD cans · 11 flavors · 15,000+ cans sold in Delhi NCR.
+</footer>
+
+<div id="toast">Demo mode — enquiry noted (nothing was sent).</div>
+<script>
+function demoSend(e){e.preventDefault();var t=document.getElementById('toast');
+t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2600);return false;}
+</script>
+</body>
+</html>
